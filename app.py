@@ -17,7 +17,7 @@ def upload_to_s3(filename):
     s3.Object(BUCKET_NAME, os.path.basename(filename)).put(Body=open(filename, 'rb'))
 
 class S3FtpUploadHandler(FTPHandler):
-    passive_ports = range(5000, 5100)
+    passive_ports = range(5000, 5010)
     def on_file_received(self, filename):
         upload_to_s3(filename)
 
